@@ -8,6 +8,13 @@
   <body>
     <div id="app">
       {{ message }}
+      <ol>
+        <li v-for="item in list"> {{ item }} </li>
+      </ol>
+      <button v-on:click="handleClick">Click</button>
+      <input v-model="message">
+      <p v-if="show">Hello Vue.js!</p>
+    
     </div>
     <!-- built files will be auto injected -->
   </body>
