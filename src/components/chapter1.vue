@@ -2,7 +2,7 @@
   <div id="chapter1">
     {{ message }}
     <ol>
-      <li v-for="item in list"> {{ item }} </li>
+      <li v-for="item in list" :key="list.id"> {{ item }} </li>
     </ol>
     <button v-on:click="handleClick">Click</button>
     <input v-model="message">

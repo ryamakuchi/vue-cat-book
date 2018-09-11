@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import chapter1 from '@/components/chapter1'
+import chapter2 from '@/components/chapter2'
 
 Vue.use(Router)
 
@@ -17,6 +18,11 @@ export default new Router({
       path: '/chapter1',
       name: 'chapter1',
       component: chapter1
+    },
+    {
+      path: '/chapter2',
+      name: 'chapter2',
+      component: chapter2
     }
   ]
 })
