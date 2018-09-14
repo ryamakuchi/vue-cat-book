@@ -45,7 +45,18 @@
       </option>
     </select>
     <div v-for="item in dataList" :key="item.id">{{ item.full_name }}</div>
-    <br><br><br><br><br><br><br><br>
+    <br><br>
+    {{ price | localeNum }}円
+    <br><br>
+    180 度は {{ 180 | radian | round }} ラジアンだよ
+    <br><br>
+    <input type="text" v-focus>リロードすると自動でフォーカスが当たります
+    <br><br>
+    <button v-on:click="heightList.push(heightList.length+1)">追加</button>
+    <ul ref="heightList">
+      <li v-for="item in heightList" :key="item.id">{{ item }}</li>
+    </ul>
+    <br><br>
   </div>
 </template>
 
@@ -76,7 +87,9 @@ export default {
       topics: [
         { value: 'vue', name: 'Vue.js' },
         { value: 'jQuery', name: 'jQuery' }
-      ]
+      ],
+      price: 19800,
+      heightList: []
     }
   },
   watch: {
@@ -89,6 +102,14 @@ export default {
       }).then(function (response) {
         this.dataList = response.data.items
       }.bind(this))
+    },
+    heightList: function () {
+      // 更新後のul要素の高さを取得できない…
+      console.log('通常:', this.$refs.heightList.offsetHeight)
+      // nextTickを使えばできる！
+      this.$nextTick(function () {
+        console.log('nextTick:', this.$refs.heightList.offsetHeight)
+      })
     }
   },
   computed: {
@@ -132,6 +153,27 @@ export default {
   methods: {
     methodsData: function () {
       return Math.random()
+    }
+  },
+  filters: {
+    localeNum: function (val) {
+      return val.toLocaleString()
+    },
+    // 小数点以下を第2位に丸めるフィルタ
+    round: function (val) {
+      return Math.round(val * 100) / 100
+    },
+    // 度からラジアンに変換するフィルタ
+    radian: function (val) {
+      return val * Math.PI / 180
+    }
+  },
+  directives: {
+    focus: {
+      // 紐付いている要素がDOMに挿入されるとき
+      inserted: function (el) {
+        el.focus() // 要素にフォーカスを当てる
+      }
     }
   }
 }
