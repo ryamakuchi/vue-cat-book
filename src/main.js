@@ -4,6 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import axios from 'axios'
+import lodash from 'lodash'
+
+Object.defineProperty(Vue.prototype, '_', { value: lodash })
 
 Vue.config.productionTip = false
 Vue.use(axios)
