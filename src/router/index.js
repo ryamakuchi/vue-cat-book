@@ -4,7 +4,6 @@ import HelloWorld from '@/components/HelloWorld'
 import chapter1 from '@/components/chapter1'
 import chapter2 from '@/components/chapter2'
 import chapter4 from '@/components/chapter4'
-import waiwai4 from '@/components/waiwai4'
 
 Vue.use(Router)
 
@@ -30,11 +29,6 @@ export default new Router({
       path: '/chapter4',
       name: 'chapter4',
       component: chapter4
-    },
-    {
-      path: '/waiwai4',
-      name: 'waiwai4',
-      component: waiwai4
     }
   ]
 })
