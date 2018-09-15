@@ -62,6 +62,7 @@
 
 <script>
 import axios from 'axios'
+import _ from 'lodash'
 
 export default {
   name: 'chapter4',
@@ -143,7 +144,7 @@ export default {
     },
     // sortedを新しく追加
     sorted: function () {
-      return this._.orderBy(this.matched, 'price', this.order ? 'desc' : 'asc')
+      return _.orderBy(this.matched, 'price', this.order ? 'desc' : 'asc')
     },
     // matchedで返ったデータをlimit件返す算出プロパティ
     limited: function () {
